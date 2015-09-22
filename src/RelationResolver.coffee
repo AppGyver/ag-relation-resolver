@@ -129,7 +129,8 @@ module.exports = _RelationResolver = ->
 
   @getUserDisplayValue = (id) ->
     return unless id?
-    @data["user"][id].username
+    user = @data["user"][id]
+    user.metadata?.name ? user.username
 
   @getRelationDisplayValue = (fieldSchema, data) ->
     unless data?
