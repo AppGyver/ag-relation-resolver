@@ -4,7 +4,7 @@
     },
     "arrow_spacing": {
         "name": "arrow_spacing",
-        "level": "ignore"
+        "level": "error"
     },
     "no_tabs": {
         "name": "no_tabs",
@@ -60,7 +60,7 @@
     },
     "no_empty_param_list": {
         "name": "no_empty_param_list",
-        "level": "ignore"
+        "level": "error"
     },
     "no_stand_alone_at": {
         "name": "no_stand_alone_at",
