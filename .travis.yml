@@ -1,16 +1,17 @@
 sudo: false
 cache:
   directories:
-    - node_modules
+  - node_modules
 language: node_js
 node_js:
-  - "0.10"
+- '0.12'
 before_install: npm install -g grunt-cli
 after_success: grunt travis
 deploy:
   provider: npm
-  email: eevert.saukkokoski@appgyver.com
+  email: ag-hostmaster+npm@appgyver.com
   on:
     tags: true
-    all_branches: true
     repo: AppGyver/ag-relation-resolver
+  api_key:
+    secure: llEVVQ6Az33Ni1/dIQpc8L6cpsUh+5DSSUsTK4RIMHnC7MsHoFT48Li+UOXRp4/bNHPE9vKyh9N8LVO53KKMDE0ybCK5r+hHnV7+cU6EL5A4XGThBw1iw7NN0tvzPwtiq2ufFxyxK3iYaCJAWrxNjFs5ntDuNtSpYKjUKwAddD48eS9x6byc5NUGFJfLEZZwCm+T4gQGwmK7SXPqlbz45gKd0HeIGTYDs0HC1tqMlpC0FsM8zoAW5eyoksXg4st9yT7qRwsYljVvJvMv8E1eM6LTVmt2nkQptavF4OsUlJ033jbTg7EDC9hZXbCzXd2Y3lnTcfRHKNSWy/hh8SxrcbrtfYvAjLi1GSLVdCw3igF3Sv3y8XQGxjec8KQhlld7ZXolerBAV/ncn1BD/uZae53ek30gQxGWhNzGj+sXzkEgsq5WaTNVtVLPYX85j85ajEdrTS6am0PygtE69hlOrldrw5zD2iXaEwvio+4EQ+mQrPtvmK+6p4y58HdKulEzdKonF7nkh2HxhCaW5kc7EX+7bjESBXTIfvGFA6sqenw0JbRlD5O6YAMZ6DRXkevKND22mrkEYtaYegUy077f1Vse8L8L0349vVnWUzQmaxWXMT6266uVnCsFt8TCmW4uzhI3pdutm3YJzL/1EPBDG0E8nX0AKPt1KQ3viu49NzE=
