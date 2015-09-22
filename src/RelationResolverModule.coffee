@@ -7,7 +7,7 @@ module.exports = (angular) ->
     {
       scope:
         userId: "="
-      controller: ($scope, Relation)->
+      controller: ($scope, Relation) ->
         $scope.value = Relation.getUserDisplayValue($scope.userId)
       template: """
         <span ng-bind="value"></span>
@@ -19,7 +19,7 @@ module.exports = (angular) ->
       scope:
         data: "="
         schema: "="
-      controller: ($scope, Relation)->
+      controller: ($scope, Relation) ->
         $scope.value = Relation.getRelationDisplayValue($scope.schema, $scope.data)
       template: """
         <span ng-bind="value"></span>
@@ -31,7 +31,7 @@ module.exports = (angular) ->
       scope:
         data: "="
         schema: "="
-      controller: ($scope, Relation)->
+      controller: ($scope, Relation) ->
         $scope.value = Relation.getMultiRelationDisplayValue $scope.schema, $scope.data
       template: """
         <span ng-bind="value">
