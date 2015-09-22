@@ -6,30 +6,32 @@ ag-relation-resolver
 [![Dependency Status](http://img.shields.io/david/AppGyver/ag-relation-resolver.svg)](https://david-dm.org/AppGyver/ag-relation-resolver)
 [![Coverage Status](https://img.shields.io/coveralls/AppGyver/ag-relation-resolver.svg)](https://coveralls.io/r/AppGyver/ag-relation-resolver)
 
-ag relation resolver npm library
+# Usage:
 
-## Continuous integration setup
+Relation resolver basically can do two things:
 
-### Getting started
+## Warm up (load) relation datas and use directives to show it
 
-This project comes with a [Travis CI](https://travis-ci.org/) setup. All you need to do is enable Travis for your project through its web interface.
+```coffee
+RelationResolver = require('ag-relation-resolver')()
+RelationResolver.prepare(resourceSchema, dataArray, populateCollectionWithValues=true).then (populatedDataArray)->
+    console.log("Array with populated relation values:", populatedDataArray)
+```
 
-If you intend to set up continuous deployment or code coverage reports, the Travis command line client comes in useful. It's installed as a Ruby gem.
+## Warm up (load) relation datas and populate original data (ids etc) with values (username of user, etc)
 
-    gem install travis
+```coffee
+MyModule = angular.module('MyModule', [
+    require('ag-relation-resolver')(angular)
+])
+MyModule.controller (RelationResolver) ->
+    RelationResolver.prepare(resourceSchema, dataArray, populateCollectionWithValues=false).then ->
+```
 
-### Continuous deployment
+render with directives like:
 
-The project is configured for deployment to npm on successfully building, tagged commits. You'll only need to provide your npm api key for Travis to work its magic.
-
-    cat ~/.npmrc | grep '_authToken\b' | sed 's/[^_]*_authToken=//' | travis encrypt --add deploy.api_key --no-interactive
-
-This reads the key from your .npmrc file and saves it to the travis configuration.
-
-### Code coverage reports
-
-The project is set up with a test runner that is compatible with the [Coveralls](http://coveralls.io/) reporting tool. Travis will push the reports to Coveralls for you, if you provide it with the repository specific private token.
-
-    travis encrypt COVERALLS_REPO_TOKEN=<your token here> --add
-
-You might find that the `grunt travis` task doesn't pass without this token being set as an env variable. If you're using Travis without code coverage reporting, remove the relevant `mochacov` task configuration segment.
+```html
+<field-user ng-if="value && displayType == 'user'" user-id="value"></field-user>
+<field-relation ng-if="value && displayType == 'relation'" schema="fieldSchema" data="value"></field-relation>
+<field-multi-relation ng-if="value && displayType == 'multirelation'" schema="fieldSchema" data="value"></field-multi-relation>
+```
