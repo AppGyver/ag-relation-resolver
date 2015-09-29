@@ -10,7 +10,7 @@ ag-relation-resolver
 
 Relation resolver basically can do two things:
 
-## Warm up (load) relation datas and use directives to show it
+## Replace collection contents directly
 
 ```coffee
 RelationResolver = require('ag-relation-resolver')()
@@ -18,7 +18,7 @@ RelationResolver.prepare(resourceSchema, dataArray, populateCollectionWithValues
     console.log("Array with populated relation values:", populatedDataArray)
 ```
 
-## Warm up (load) relation datas and populate original data (ids etc) with values (username of user, etc)
+## Load relation datas into a cache without replacing collection contents for faster rendering later
 
 ```coffee
 MyModule = angular.module('MyModule', [
